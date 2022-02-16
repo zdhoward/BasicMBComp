@@ -19,7 +19,8 @@
   <EXPORTFORMATS>
     <VS2022 targetFolder="Builds/VisualStudio2022">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="BasicMBComp" enablePluginBinaryCopyStep="1"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="BasicMBComp" enablePluginBinaryCopyStep="1"
+                       vst3BinaryLocation="D:\Beatz\VSTs\VST3\ZxTools\Basic"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="BasicMBComp"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -35,6 +36,7 @@
         <MODULEPATH id="juce_graphics" path="../../../modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../modules"/>
       </MODULEPATHS>
     </VS2022>
   </EXPORTFORMATS>
@@ -48,6 +50,7 @@
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

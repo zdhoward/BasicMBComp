@@ -53,7 +53,19 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+
+    using APVTS = AudioProcessorValueTreeState;
+    static APVTS::ParameterLayout createParameterLayout();
+    APVTS apvts{ *this, nullptr, "Parameters", createParameterLayout() };
 private:
+    dsp::Compressor<float> compressor;
+
+    AudioParameterFloat* attack{ nullptr };
+    AudioParameterFloat* release{ nullptr };
+    AudioParameterFloat* threshold{ nullptr };
+    AudioParameterChoice* ratio{ nullptr };
+    AudioParameterBool* bypassed{ nullptr };
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicMBCompAudioProcessor)
 };
