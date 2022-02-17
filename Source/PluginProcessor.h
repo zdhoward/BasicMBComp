@@ -155,11 +155,18 @@ private:
     CompressorBand compressor;
 
     using Filter = dsp::LinkwitzRileyFilter<float>;
-    Filter LP, HP;
+    //      fc0     fc1
+    Filter  LP1,    AP2,
+            HP1,    LP2,
+                    HP2;
 
-    AudioParameterFloat* lowCrossover{ nullptr };
+    //Filter invAP1, invAP2;
+    //AudioBuffer<float> invAPBuffer;
 
-    std::array<AudioBuffer<float>, 2> filterBuffers;
+    AudioParameterFloat* lowMidCrossover{ nullptr };
+    AudioParameterFloat* midHighCrossover{ nullptr };
+
+    std::array<AudioBuffer<float>, 3> filterBuffers;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicMBCompAudioProcessor)
