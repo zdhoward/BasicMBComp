@@ -36,6 +36,14 @@ namespace Params
         Bypassed_Low_Band,
         Bypassed_Mid_Band,
         Bypassed_High_Band,
+
+        Mute_Low_Band,
+        Mute_Mid_Band,
+        Mute_High_Band,
+
+        Solo_Low_Band,
+        Solo_Mid_Band,
+        Solo_High_Band,
     };
 
     inline const std::map<Names, String>& GetParams()
@@ -64,6 +72,14 @@ namespace Params
             {Bypassed_Low_Band, "Bypassed Low Band"},
             {Bypassed_Mid_Band, "Bypassed Mid Band"},
             {Bypassed_High_Band, "Bypassed High Band"},
+
+            {Mute_Low_Band, "Mute Low Band"},
+            {Mute_Mid_Band, "Mute Mid Band"},
+            {Mute_High_Band, "Mute High Band"},
+
+            {Solo_Low_Band, "Solo Low Band"},
+            {Solo_Mid_Band, "Solo Mid Band"},
+            {Solo_High_Band, "Solo High Band"},
         };
 
         return params;
@@ -77,6 +93,8 @@ struct CompressorBand
     AudioParameterFloat* threshold{ nullptr };
     AudioParameterChoice* ratio{ nullptr };
     AudioParameterBool* bypassed{ nullptr };
+    AudioParameterBool* mute{ nullptr };
+    AudioParameterBool* solo{ nullptr };
 
     void prepare(const dsp::ProcessSpec& spec)
     {
