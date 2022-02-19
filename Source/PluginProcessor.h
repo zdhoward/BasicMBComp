@@ -44,6 +44,9 @@ namespace Params
         Solo_Low_Band,
         Solo_Mid_Band,
         Solo_High_Band,
+
+        Gain_In,
+        Gain_Out,
     };
 
     inline const std::map<Names, String>& GetParams()
@@ -80,6 +83,9 @@ namespace Params
             {Solo_Low_Band, "Solo Low Band"},
             {Solo_Mid_Band, "Solo Mid Band"},
             {Solo_High_Band, "Solo High Band"},
+
+            {Gain_In, "Gain In"},
+            {Gain_Out, "Gain Out"},
         };
 
         return params;
@@ -188,6 +194,18 @@ private:
     AudioParameterFloat* midHighCrossover{ nullptr };
 
     std::array<AudioBuffer<float>, 3> filterBuffers;
+
+    dsp::Gain<float> inputGain, outputGain;
+    AudioParameterFloat* inputGainParam{ nullptr };
+    AudioParameterFloat* outputGainParam{ nullptr };
+
+    template<typename T, typename U>
+    void applyGain(T& buffer, U& gain)
+    {
+        auto block = dsp::AudioBlock<float>(buffer);
+        auto ctx = dsp::ProcessContextReplacing<float>(block);
+        gain.process(ctx);
+    }
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BasicMBCompAudioProcessor)
